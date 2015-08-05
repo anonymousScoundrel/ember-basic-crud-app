@@ -1,0 +1,17 @@
+{{! This is functionally our homepage now due to /router.js}}
+<div class="col-sm-6">
+	<ul class="list-group">
+		{{! Ideally each one of these should probably be defined in the data store}}
+		<li class="list-group-item">
+			{{! Link to employment}}
+			{{#link-to 'employment'}}<a href>Employment</a>
+			{{! Calculated total from routes/dashboard.js}}
+			${{model.total}}
+			{{/link-to}}
+			{{! End of our link}}
+		</li>
+	</ul>
+</div>
+<div class="col-sm-6">
+	{{outlet}}
+</div>

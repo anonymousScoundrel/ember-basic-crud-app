@@ -43,5 +43,10 @@ module.exports = function(environment) {
 
   }
 
+  // Get rid of style related console error
+  ENV.contentSecurityPolicy = {
+    'style-src': "'self' 'unsafe-inline'"
+  };
+
   return ENV;
 };

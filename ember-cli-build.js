@@ -19,5 +19,12 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  // Include bootstrap components just so stuff looks a little nicer
+  app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+  app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
+    destDir: 'assests'
+  });
+  app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+  
   return app.toTree();
 };

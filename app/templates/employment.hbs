@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <ul class="list-group">
+      {{! Only show if editing}}
+      <li class="list-group-item">
+        {{! The input which accepts the value for model.sourceInput}}
+        {{input
+          type="text"
+          placeholder="Name of Income Source"
+          value=model.sourceInput
+        }}
+      </li>
+      <li class="list-group-item">
+        {{! The input which accepts the value for model.salaryInput}}
+        {{input
+          type="text"
+          placeholder="Monthly salary"
+          value=model.salaryInput
+        }}
+      </li>
+      {{! The component which displays the value of mode.computedSalary}}
+      {{computed-employment model=model}}
+      {{! This is kludgy :( }}
+      {{#if isAdding}}
+        <li class="list-group-item">
+          {{! Click this to fire the addRow method in controllers/employment.js}}
+          <button {{action "addRow" model}} class="btn btn-primary btn-block" type="submit">Save</button>
+        </li>
+      {{/if}}
+      {{#if isEditing}}
+        <li class="list-group-item">
+          {{! Click this to fire the addRow method in controllers/employment.js}}
+          <button {{action "updateRow" model}} class="btn btn-primary btn-block" type="submit">Update</button>
+          {{! Click this to fire the cancelUpdate method in controllers/employment.js}}
+          <button {{action "cancelUpdate" model}} class="btn btn-danger btn-block" type="submit">Cancel</button>
+        </li>
+      {{/if}}
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul class="list-group">
+        {{! Iterate through each value in model.records as data}}
+        {{#each data in model.records}}
+          <li class="list-group-item row">
+            {{! Populates each row on the right side of the /employment page}}
+            <span class="col-sm-3">
+              {{data.source}}
+            </span>
+            <span class="col-sm-3">
+              ${{data.salary}}
+            </span>
+            <span class="col-sm-3">
+              {{! Click to fire the editRow method inside controllers/employment.js}}
+              <button {{action "editRow" data.id}} class="btn btn-primary">Edit</button>
+            </span>
+            <span class="col-sm-3">
+              {{! Click to fire the deleteRow method inside controllers/employment.js}}
+              <button {{action "deleteRow" data.id}} class="btn btn-danger">Delete</button>
+            </span>
+          </li>
+        {{/each}}
+      </ul>
+      {{outlet}}
+    </div>
+  </div>
+</div>
