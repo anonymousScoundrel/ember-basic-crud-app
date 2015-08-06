@@ -5,6 +5,7 @@ Bugs:
    ✔ Remove unnecessary files @done (15-08-06 01:39)
    ✔ Init git flow in project @done (15-08-06 01:50)
    ✔ All references to 12 (as in months) should be moved to data store @done (15-08-06 02:30)
+   ☐ Check for places to use computed value
    ☐ Try to fix deprecation notices if possible
    ☐ Check code for DRYness, indentation, comments, etc.
    ☐ Explore unit testing in Ember
