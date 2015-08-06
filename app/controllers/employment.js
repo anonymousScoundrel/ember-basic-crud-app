@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
 
     	// set values from data to fields
     	store.find('employment', id).then(function(item) {
-    		self.set('model.salaryInput', item.get('salary'));
+    		self.set('model.salaryInput', item.get('salary') / 12);
     		self.set('model.sourceInput', item.get('source'));
     	});
 
