@@ -1,0 +1,7 @@
+Bugs:
+  ☐ Click delete while in edit mode should switch current mode to add
+ Todo:
+   ☐ Init git flow in project
+   ☐ All references to 12 (as in months) should be moved to data store
+   ☐ Check code for DRYness, indentation, comments, etc.
+   ☐ Explore unit testing in Ember
