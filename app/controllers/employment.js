@@ -71,6 +71,14 @@ export default Ember.Controller.extend({
         store.deleteRecord(item);
       });
 
+      // Fix for if a user clicks delete while editing
+      // The record is still deleted but a new record is inserted
+      // Maybe there should be a confirmation?
+      if (this.get('isEditing') === true) {
+        this.set('isAdding', true);
+        this.set('isEditing', false);
+      }
+
     },
     cancelUpdate: function() {
     	this.set('isEditing', false);
