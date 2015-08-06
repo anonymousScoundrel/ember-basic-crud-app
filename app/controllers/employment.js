@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+// Is the controller in Ember going away or not?
+// This is very confusing according to the documentation.
 export default Ember.Controller.extend({
 
 	isEditing: false,
