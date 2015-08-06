@@ -1,6 +1,7 @@
 Bugs:
   ☐ Click delete while in edit mode should switch current mode to add
  Todo:
+   ✔ Remove unnecessary files @done (15-08-06 01:39)
    ☐ Init git flow in project
    ☐ All references to 12 (as in months) should be moved to data store
    ☐ Check code for DRYness, indentation, comments, etc.
