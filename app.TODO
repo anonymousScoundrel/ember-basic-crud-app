@@ -1,8 +1,8 @@
 Bugs:
-  ☐ Click delete while in edit mode should switch current mode to add
+  ✔ Click delete while in edit mode should switch current mode to add @done (15-08-06 02:30)
  Todo:
    ✔ Remove unnecessary files @done (15-08-06 01:39)
    ✔ Init git flow in project @done (15-08-06 01:50)
-   ☐ All references to 12 (as in months) should be moved to data store
+   ✔ All references to 12 (as in months) should be moved to data store @done (15-08-06 02:30)
    ☐ Check code for DRYness, indentation, comments, etc.
    ☐ Explore unit testing in Ember
