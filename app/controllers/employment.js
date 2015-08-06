@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
   	if (salaryInput !== null) {
   		// Make sure this is an integer or float
   		this.set('model.computedSalary',
-  			parseFloat(salaryInput * 12).toFixed(2)
+  			parseFloat(salaryInput * this.get('model.multiplier')).toFixed(2)
   		);
   	}
 
@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
 
     	// set values from data to fields
     	store.find('employment', id).then(function(item) {
-    		self.set('model.salaryInput', item.get('salary') / 12);
+    		self.set('model.salaryInput', item.get('salary') / self.get('model.multiplier'));
     		self.set('model.sourceInput', item.get('source'));
     	});
 

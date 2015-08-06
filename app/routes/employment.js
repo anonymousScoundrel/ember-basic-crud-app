@@ -19,6 +19,7 @@ export default Ember.Route.extend({
       	sourceInput: null,
       	salaryInput: null,
       	computedSalary: null,
+        multiplier: 12,
       	records: data
     	};
   	});
