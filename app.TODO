@@ -1,10 +1,12 @@
 Bugs:
   ✔ Click delete while in edit mode should switch current mode to add @done (15-08-06 02:30)
-  ☐ Fix fixed two decimals disappearing in employment-row
+  ✔ Fix fixed two decimals disappearing in employment-row @done (15-08-06 22:04)
  Todo:
    ✔ Remove unnecessary files @done (15-08-06 01:39)
    ✔ Init git flow in project @done (15-08-06 01:50)
    ✔ All references to 12 (as in months) should be moved to data store @done (15-08-06 02:30)
+   ✔ Add commas displayed currency values/remove before storage @done (15-08-06 23:20)
+   ☐ Format employment row value as currency
    ☐ Check for places to use computed value
    ☐ Try to fix deprecation notices if possible
    ☐ Check code for DRYness, indentation, comments, etc.

@@ -14,7 +14,10 @@ export default Ember.Controller.extend({
   	if (salaryInput !== null) {
   		// Make sure this is an integer or float
   		this.set('model.computedSalary',
-  			parseFloat(salaryInput * this.get('model.multiplier')).toFixed(2)
+        accounting.formatMoney(
+          this.get('model.salaryInput') * 12,
+          { precision: 2 }
+        )
   		);
   	}
 
@@ -23,13 +26,24 @@ export default Ember.Controller.extend({
     addRow: function() {
     	var self = this;
     	var store = self.store;
+      var toNum = accounting.unformat;
+      var rawComputedSalary = self.get('model.computedSalary');
+      var computedSalary = toNum(rawComputedSalary);
+
 
       // Save new record to local data store
       store.createRecord('employment', {
-      	source: self.get('model.sourceInput'),
-      	salary: self.get('model.computedSalary')
+        source: self.get('model.sourceInput'),
+        salary: accounting.unformat(computedSalary)
       }).save().then(function() {
-	      // Reset values to default state
+        // Because whole numbers get their decimal values truncated when stored.
+        // This replaces those truncated decimals.
+        // It might make more sense to save these values as a string and verify
+        // they contain only numbers on save.
+        if (Math.round(computedSalary) === computedSalary) {
+          self.send('formatLastRecord');
+        }
+        // Reset values to default state
 	      self.send('clearForm');
       });
     },
@@ -54,10 +68,16 @@ export default Ember.Controller.extend({
     updateRow: function () {
     	var self = this;
     	var store = self.store;
+      var toNum = accounting.unformat;
+      var rawComputedSalary = self.get('model.computedSalary');
+      var computedSalary = toNum(rawComputedSalary);
 
 			store.find('employment', self.get('updateId')).then(function(item) {
 				item.set('source', self.get('model.sourceInput'));
-				item.set('salary', self.get('model.computedSalary'));
+				item.set('salary', computedSalary);
+        if (Math.round(computedSalary) === computedSalary) {
+          self.send('formatLastRecord');
+        }
 				self.set('updateId', null);
 				self.send('clearForm');
 				self.set('isEditing', false);
@@ -91,6 +111,17 @@ export default Ember.Controller.extend({
     clearForm: function() {
     	this.set('model.sourceInput', null);
     	this.set('model.salaryInput', ''); // null doesn't seem to work here
+    },
+    formatLastRecord: function() {
+      var self = this;
+      var store = self.store;
+
+      store.findAll('employment').then(function(items) {
+        var lastRecord = items.get('lastObject');
+        var lastSalary = lastRecord.get('salary');
+
+        lastRecord.set('salary', parseFloat(lastSalary).toFixed(2));
+      });
     }
   }
 

@@ -25,6 +25,9 @@ module.exports = function(defaults) {
     destDir: 'assests'
   });
   app.import('bower_components/bootstrap/dist/js/bootstrap.js');
-  
+
+  // Include account.js to help cleanly display currency values
+  app.import('bower_components/accounting.js/accounting.js');
+
   return app.toTree();
 };

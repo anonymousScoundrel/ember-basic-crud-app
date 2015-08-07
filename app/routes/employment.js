@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   	// Populate our data store records with formatted data
   	return this.store.findAll('employment').then(function(data) {
 
-  		data.filter(function(item, index, enumberable) {
+  		data.filter(function(item) {
   			var salary = parseFloat(item.get('salary')).toFixed(2);
 
   				item.set('salary', salary);
