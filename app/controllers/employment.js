@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   salaryObserver: function() {
   	// Note: input sanitization is apparently already handled by HTMLbars
   	var salaryInput = this.get('model.salaryInput');
-		var inputIsNaN = Number.isNaN(salaryInput);
+		var inputIsNaN = isNaN(salaryInput);
 
   	if (salaryInput !== null && salaryInput !== '') {
 			if (!inputIsNaN) {
