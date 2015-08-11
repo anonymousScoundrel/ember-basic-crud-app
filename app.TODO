@@ -8,7 +8,7 @@ Bugs:
    ✔ All references to 12 (as in months) should be moved to data store @done (15-08-06 02:30)
    ✔ Add commas displayed currency values/remove before storage @done (15-08-06 23:20)
    ✔ Format employment row value as currency @done(2015-08-11 00:59) @project(Bugs / Todo)
-   ☐ Check for places to use computed value
    ✔ Try to fix deprecation notices if possible @done(2015-08-10 21:37) @project(Bugs / Todo)
+   ☐ Check for places to use computed value
    ☐ Check code for DRYness, indentation, comments, etc.
    ☐ Explore unit testing in Ember
