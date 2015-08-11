@@ -1,6 +1,18 @@
-import DS from 'ember-data';
+// export { default } from 'ember-data-fixture-adapter';
+// The above method worked, but threw deprecation notices.
+// The fixes below take care of those.
+import EmberDataFixtureAdapter from 'ember-data-fixture-adapter';
 
-// This is what allows us to store data locally in our application
-// This is deprecated. Is there a non-deprecated solution?
-export default DS.FixtureAdapter.extend({
+export default EmberDataFixtureAdapter.extend({
+  shouldReloadAll: function() {
+    return true;
+  },
+  shouldBackgroundReloadRecord: function() {
+    return true;
+  }
 });
+
+// This is the deprecated way. Now we use above add on.
+// import DS from 'ember-data';
+// export default DS.FixtureAdapter.extend({
+// });

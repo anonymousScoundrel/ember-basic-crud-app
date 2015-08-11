@@ -26,23 +26,12 @@ export default Ember.Controller.extend({
     addRow: function() {
     	var self = this;
     	var store = self.store;
-      var toNum = accounting.unformat;
-      var rawComputedSalary = self.get('model.computedSalary');
-      var computedSalary = toNum(rawComputedSalary);
-
 
       // Save new record to local data store
       store.createRecord('employment', {
         source: self.get('model.sourceInput'),
-        salary: accounting.unformat(computedSalary)
+        salary: self.get('model.computedSalary')
       }).save().then(function() {
-        // Because whole numbers get their decimal values truncated when stored.
-        // This replaces those truncated decimals.
-        // It might make more sense to save these values as a string and verify
-        // they contain only numbers on save.
-        if (Math.round(computedSalary) === computedSalary) {
-          self.send('formatLastRecord');
-        }
         // Reset values to default state
 	      self.send('clearForm');
       });
@@ -57,7 +46,9 @@ export default Ember.Controller.extend({
 
     	// set values from data to fields
     	store.find('employment', id).then(function(item) {
-    		self.set('model.salaryInput', item.get('salary') / self.get('model.multiplier'));
+				var cleanSalary = accounting.unformat(item.get('salary'));
+
+    		self.set('model.salaryInput', cleanSalary / self.get('model.multiplier'));
     		self.set('model.sourceInput', item.get('source'));
     	});
 
@@ -68,16 +59,11 @@ export default Ember.Controller.extend({
     updateRow: function () {
     	var self = this;
     	var store = self.store;
-      var toNum = accounting.unformat;
-      var rawComputedSalary = self.get('model.computedSalary');
-      var computedSalary = toNum(rawComputedSalary);
 
 			store.find('employment', self.get('updateId')).then(function(item) {
 				item.set('source', self.get('model.sourceInput'));
-				item.set('salary', computedSalary);
-        if (Math.round(computedSalary) === computedSalary) {
-          self.send('formatLastRecord');
-        }
+				item.set('salary', self.get('model.computedSalary'));
+
 				self.set('updateId', null);
 				self.send('clearForm');
 				self.set('isEditing', false);

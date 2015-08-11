@@ -10,14 +10,14 @@ export default Ember.Route.extend({
 			var sum = 0;
 
 			data.getEach('salary').forEach(function(item) {
-				sum += parseFloat(item);
+				sum += accounting.unformat(item);
 			});
 
 			sum = sum.toFixed(2);
 
-			return { total: sum };
+			return { total: accounting.formatMoney(sum, { precision: 2 }) };
 		});
-		
+
 	}
 
 });
