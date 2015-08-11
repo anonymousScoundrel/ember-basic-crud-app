@@ -1,14 +1,14 @@
 Bugs:
   ✔ Click delete while in edit mode should switch current mode to add @done (15-08-06 02:30)
   ✔ Fix fixed two decimals disappearing in employment-row @done (15-08-06 22:04)
-  ☐ Validate fields before allowing a save or edit
+  ✔ Minor validation fields before allowing a save or edit @done(2015-08-11 01:46) @project(Bugs)
  Todo:
    ✔ Remove unnecessary files @done (15-08-06 01:39)
    ✔ Init git flow in project @done (15-08-06 01:50)
    ✔ All references to 12 (as in months) should be moved to data store @done (15-08-06 02:30)
    ✔ Add commas displayed currency values/remove before storage @done (15-08-06 23:20)
-   ☐ Format employment row value as currency
+   ✔ Format employment row value as currency @done(2015-08-11 00:59) @project(Bugs / Todo)
    ☐ Check for places to use computed value
-   ☐ Try to fix deprecation notices if possible
+   ✔ Try to fix deprecation notices if possible @done(2015-08-10 21:37) @project(Bugs / Todo)
    ☐ Check code for DRYness, indentation, comments, etc.
    ☐ Explore unit testing in Ember

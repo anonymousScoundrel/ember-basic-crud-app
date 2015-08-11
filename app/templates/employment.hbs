@@ -37,6 +37,11 @@
         </li>
       {{/if}}
       </ul>
+      {{#if salaryError}}
+      <div class="alert alert-danger">
+        Warning | Salary should contain only a whole or decimal number.
+      </div>
+      {{/if}}
     </div>
     <div class="col-sm-6">
       <ul class="list-group">

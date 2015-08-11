@@ -7,18 +7,25 @@ export default Ember.Controller.extend({
 	isEditing: false,
 	isAdding: true,
 	updateId: null,
+	salaryError: false,
   salaryObserver: function() {
   	// Note: input sanitization is apparently already handled by HTMLbars
   	var salaryInput = this.get('model.salaryInput');
+		var inputIsNaN = Number.isNaN(salaryInput);
 
-  	if (salaryInput !== null) {
-  		// Make sure this is an integer or float
-  		this.set('model.computedSalary',
-        accounting.formatMoney(
-          this.get('model.salaryInput') * 12,
-          { precision: 2 }
-        )
-  		);
+  	if (salaryInput !== null && salaryInput !== '') {
+			if (!inputIsNaN) {
+				this.set('salaryError', false);
+  			// Make sure this is displayed as an integer or float
+  			this.set('model.computedSalary',
+        	accounting.formatMoney(
+          	this.get('model.salaryInput') * 12,
+          	{ precision: 2 }
+        	)
+  			);
+			} else {
+				this.set('salaryError', true);
+			}
   	}
 
   }.observes('model.salaryInput'),
@@ -95,19 +102,9 @@ export default Ember.Controller.extend({
     	this.send('clearForm');
     },
     clearForm: function() {
-    	this.set('model.sourceInput', null);
+			this.set('model.sourceInput', null);
+    	this.set('model.computedSalary', null);
     	this.set('model.salaryInput', ''); // null doesn't seem to work here
-    },
-    formatLastRecord: function() {
-      var self = this;
-      var store = self.store;
-
-      store.findAll('employment').then(function(items) {
-        var lastRecord = items.get('lastObject');
-        var lastSalary = lastRecord.get('salary');
-
-        lastRecord.set('salary', parseFloat(lastSalary).toFixed(2));
-      });
     }
   }
 
