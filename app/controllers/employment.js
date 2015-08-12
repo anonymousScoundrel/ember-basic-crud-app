@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
   			// Make sure this is displayed as an integer or float
   			this.set('model.computedSalary',
         	accounting.formatMoney(
-          	this.get('model.salaryInput') * 12,
+          	this.get('model.salaryInput') * this.get('model.multiplier'),
           	{ precision: 2 }
         	)
   			);
