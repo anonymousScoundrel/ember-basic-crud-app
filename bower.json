@@ -1,5 +1,5 @@
 {
-  "name": "voyant-sample-app",
+  "name": "ember-basic-crud-app",
   "dependencies": {
     "ember": "1.13.5",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",

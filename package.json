@@ -1,7 +1,7 @@
 {
-  "name": "voyant-sample-app",
+  "name": "ember-basic-crud-app",
   "version": "0.0.0",
-  "description": "Small description for voyant-sample-app goes here",
+  "description": "Small description for ember-basic-crud-app goes here",
   "private": true,
   "directories": {
     "doc": "doc",

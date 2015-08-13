@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'voyant-sample-app',
+    modulePrefix: 'ember-basic-crud-app',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

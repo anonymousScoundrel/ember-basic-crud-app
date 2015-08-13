@@ -24,15 +24,15 @@
       {{! This feels kludgy :( }}
       {{#if isAdding}}
         <li class="list-group-item">
-          {{! Click this to fire the addRow method in controllers/employment.js}}
+          {{! Click this to fire the addRow method in controllers/income.js}}
           <button {{action "addRow" model}} class="btn btn-primary btn-block" type="submit">Save</button>
         </li>
       {{/if}}
       {{#if isEditing}}
         <li class="list-group-item">
-          {{! Click this to fire the addRow method in controllers/employment.js}}
+          {{! Click this to fire the addRow method in controllers/income.js}}
           <button {{action "updateRow" model}} class="btn btn-primary btn-block" type="submit">Update</button>
-          {{! Click this to fire the cancelUpdate method in controllers/employment.js}}
+          {{! Click this to fire the cancelUpdate method in controllers/income.js}}
           <button {{action "cancelUpdate" model}} class="btn btn-danger btn-block" type="submit">Cancel</button>
         </li>
       {{/if}}
@@ -48,7 +48,7 @@
         {{! Iterate through each value in model.records as data}}
         {{#each model.records as |data|}}
           <li class="list-group-item row">
-            {{! Populates each row on the right side of the /employment page}}
+            {{! Populates each row on the right side of the /income page}}
             <span class="col-sm-3">
               {{data.source}}
             </span>
@@ -56,11 +56,11 @@
               {{data.salary}}
             </span>
             <span class="col-sm-3">
-              {{! Click to fire the editRow method inside controllers/employment.js}}
+              {{! Click to fire the editRow method inside controllers/income.js}}
               <button {{action "editRow" data.id}} class="btn btn-primary">Edit</button>
             </span>
             <span class="col-sm-3">
-              {{! Click to fire the deleteRow method inside controllers/employment.js}}
+              {{! Click to fire the deleteRow method inside controllers/income.js}}
               <button {{action "deleteRow" data.id}} class="btn btn-danger">Delete</button>
             </span>
           </li>

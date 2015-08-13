@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 
 	// Define employment url
-  this.route('employment');
+  this.route('income');
   // Define dashboard as root url
   this.resource('dashboard', {path: '/'});
 

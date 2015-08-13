@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     * were using one, that is.)
     */
   	// Populates our data store records with formatted data
-  	return this.store.findAll('employment').then(function(data) {
+  	return this.store.findAll('income').then(function(data) {
 
   		data.filter(function(item) {
   			var salary = accounting.formatMoney(

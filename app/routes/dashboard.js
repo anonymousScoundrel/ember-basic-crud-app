@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 	model: function() {
 
 		// Note: Even a pull from locally defined data is returned as a promise
-		return this.store.findAll('employment').then(function(data) {
+		return this.store.findAll('income').then(function(data) {
 
 			var sum = 0;
 

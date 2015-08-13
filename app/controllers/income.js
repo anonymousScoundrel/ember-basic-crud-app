@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
     	var store = self.store;
 
       // Save new record to local data store
-      store.createRecord('employment', {
+      store.createRecord('income', {
         source: self.get('model.sourceInput'),
         salary: self.get('model.computedSalary')
       }).save().then(function() {
@@ -52,7 +52,7 @@ export default Ember.Controller.extend({
     	self.set('isEditing', true);
 
     	// set values from data to fields
-    	store.find('employment', id).then(function(item) {
+    	store.find('income', id).then(function(item) {
 				var cleanSalary = accounting.unformat(item.get('salary'));
 
     		self.set('model.salaryInput', cleanSalary / self.get('model.multiplier'));
@@ -67,7 +67,7 @@ export default Ember.Controller.extend({
     	var self = this;
     	var store = self.store;
 
-			store.find('employment', self.get('updateId')).then(function(item) {
+			store.find('income', self.get('updateId')).then(function(item) {
 				item.set('source', self.get('model.sourceInput'));
 				item.set('salary', self.get('model.computedSalary'));
 
@@ -82,7 +82,7 @@ export default Ember.Controller.extend({
     	var self = this;
     	var store = self.store;
 
-      store.find('employment', id).then(function(item) {
+      store.find('income', id).then(function(item) {
         store.deleteRecord(item);
       });
 
